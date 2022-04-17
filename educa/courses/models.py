@@ -11,7 +11,7 @@ class Subject(models.Model):
 
     class Meta:
         ordering = ['title']
-    
+
     def __str__(self) -> str:
         return self.title
 
@@ -31,10 +31,12 @@ class Course(models.Model):
     slug = models.CharField(max_length=200, unique=True)
     overview = models.TextField()
     created = models.DateTimeField(auto_now_add=True)
+    students = models.ManyToManyField(
+        User, related_name='courses_joined', blank=True)
 
     class Meta:
         ordering = ['-created']
-    
+
     def __str__(self) -> str:
         return self.title
 
@@ -55,8 +57,6 @@ class Module(models.Model):
     def __str__(self) -> str:
         return f'{self.order}. {self.title}'
 
-    
-
 
 class Content(models.Model):
 
@@ -69,7 +69,7 @@ class Content(models.Model):
         ContentType,
         on_delete=models.CASCADE,
         limit_choices_to={
-            'model__in' : (
+            'model__in': (
                 'text',
                 'video',
                 'image',
@@ -84,6 +84,7 @@ class Content(models.Model):
     class Meta:
         ordering = ['order']
 
+
 class ItemBase(models.Model):
 
     owner = models.ForeignKey(
@@ -97,10 +98,10 @@ class ItemBase(models.Model):
 
     class Meta:
         abstract = True
-    
+
     def __str__(self) -> str:
         return self.title
-    
+
 
 class Text(ItemBase):
     content = models.TextField()
@@ -116,4 +117,3 @@ class Image(ItemBase):
 
 class Video(ItemBase):
     url = models.URLField()
-
