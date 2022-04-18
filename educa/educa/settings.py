@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     # 3rd
     'embed_video',
     'memcache_status',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -149,3 +150,9 @@ CACHE_MIDDLEWARE_ALIAS = 'default'
 CACHE_MIDDLEWARE_SECONDS = 60 * 50
 CACHE_MIDDLEWARE_KEY_PREFIX = 'educa'
 
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ]
+}
