@@ -3,3 +3,5 @@ __pycache__
 errors.txt
 nginx_error.log
 ssl
+static
+media
