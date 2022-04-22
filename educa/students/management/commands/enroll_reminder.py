@@ -9,7 +9,7 @@ from django.utils import timezone
 
 class Command(BaseCommand):
 
-    help = 'Sends an e-mail reminder to users registered more than N days that are not enrolled into any courses yet'
+    '''Sends an e-mail reminder to users registered more than N days that are not enrolled into any courses yet'''
 
     def add_arguments(self, parser) -> None:
         parser.add_argument('--days', dest='days', type=int)
