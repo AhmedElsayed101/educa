@@ -8,7 +8,7 @@ ADMINS = (
     ('Ahmed', 'ahmedelee@gmail.com'),
 )
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['.educaproject.com']
 
 DATABASES = {
     'default': {
