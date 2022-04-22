@@ -18,3 +18,6 @@ DATABASES = {
         'PASSWORD': 'educa', # should use env vars.
     }
 }
+
+SECURE_SSL_REDIRECT = True
+CSRF_COOKIE_SECURE = True
